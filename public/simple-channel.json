@@ -1,0 +1,10 @@
+{
+    "id": "channel-id-1",
+    "name": "Jason's First Challenge",
+    "videos": ["https://www.youtube.com/embed/pckuS--UlV4"],
+    "challenges": [],
+    "playbackConfig": {
+      "id": "1",
+      "name": "2"
+    }
+  }

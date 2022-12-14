@@ -1,0 +1,21 @@
+.iframe {
+    display: block;
+    border: none;
+    height: 100vh;
+    width: 100vw;
+}
+.baseOverlay {
+    animation: partialBackgroundFadeOut 3s;
+    background-color:rgba(0, 0, 0, .25);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+}
+@keyframes partialBackgroundFadeOut {
+    0% { background-color:rgba(0, 0, 0, 1); }
+    50% { background-color:rgba(0, 0, 0, 1); }
+    100% {background-color:rgba(0, 0, 0, .25); }
+}
