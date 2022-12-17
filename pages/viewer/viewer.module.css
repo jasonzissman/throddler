@@ -5,8 +5,9 @@
     width: 100vw;
 }
 .baseOverlay {
-    background-color:rgba(0, 0, 0, 1);
+    background-color:rgba(0, 0, 0, .85);
     position: fixed;
+    overflow-y: scroll;
     top: 0;
     left: 0;
     width: 100%;
@@ -18,6 +19,6 @@
     animation: fullBackgroundTransparent 2s;
 }
 @keyframes fullBackgroundTransparent {
-    0% { background-color:rgba(0, 0, 0, 1); }
+    0% { background-color:rgba(0, 0, 0, .85); }
     100% {background-color:rgba(0, 0, 0, 0); }
 }

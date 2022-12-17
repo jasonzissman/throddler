@@ -1,0 +1,7 @@
+.videoItem {
+    display: inline-block;
+    cursor: pointer;
+}
+.videoItem img {
+    width: 300px;
+}
