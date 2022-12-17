@@ -1,9 +1,20 @@
 import Head from 'next/head'
-import Image from 'next/image'
 import { Channel } from '../../lib/channel'
-import styles from  './viewer.module.css'
+import styles from './viewer.module.css'
+import { useState } from 'react';
+import { Loading } from './loading/loading'
 
-export default function Viewer(data: {channel: Channel}) {
+export default function Viewer(data: { channel: Channel }) {
+  let [activeVideoIndex] = useState(0);
+  let [isAppBootstrapping, setAppBootstrapping] = useState(true);
+  let [isVideoLoading, setVideoLoading] = useState(true);
+  
+
+  const iFrameLoaded = () => {
+    setAppBootstrapping(false)
+    setVideoLoading(false);
+  }
+
   return (
     <div>
       <Head>
@@ -12,12 +23,15 @@ export default function Viewer(data: {channel: Channel}) {
       </Head>
 
       <main>
-        <iframe className={styles.iframe} id="the-iframe" src={data.channel.videos[0]} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="false"></iframe>
+        <iframe onLoad={iFrameLoaded} className={styles.iframe} id="the-iframe" src={data.channel.videos[activeVideoIndex]} title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
       </main>
 
-      <div className={styles.baseOverlay}>
-        {data.channel.name}
+      <div className={[styles.baseOverlay, isAppBootstrapping ? '' : styles.fullyTransparent].join(" ")}>
+
       </div>
+
+      { isAppBootstrapping && (<Loading />) }
+
     </div>
   )
 }

@@ -5,8 +5,7 @@
     width: 100vw;
 }
 .baseOverlay {
-    animation: partialBackgroundFadeOut 3s;
-    background-color:rgba(0, 0, 0, .25);
+    background-color:rgba(0, 0, 0, 1);
     position: fixed;
     top: 0;
     left: 0;
@@ -14,8 +13,11 @@
     height: 100%;
     z-index: 5;
 }
-@keyframes partialBackgroundFadeOut {
+.fullyTransparent {
+    background-color:rgba(0, 0, 0, 0);
+    animation: fullBackgroundTransparent 2s;
+}
+@keyframes fullBackgroundTransparent {
     0% { background-color:rgba(0, 0, 0, 1); }
-    50% { background-color:rgba(0, 0, 0, 1); }
-    100% {background-color:rgba(0, 0, 0, .25); }
+    100% {background-color:rgba(0, 0, 0, 0); }
 }
