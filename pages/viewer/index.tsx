@@ -1,26 +1,23 @@
 import Head from 'next/head'
+import { useState } from 'react';
 import { Channel } from '../../lib/channel'
-import styles from './viewer.module.css'
-import { useState, MouseEventHandler } from 'react';
-import { Loading } from './loading/loading'
-import { SelectVideo } from './select_video/select_video'
-
+import { VideoSelector } from './video_selector/video_selector'
+import VideoPlayer from './video_player/video_player'
 
 export default function Viewer(data: { channel: Channel }) {
   let [activeVideoUrl, setActiveVideoUrl] = useState('');
-  let [isAppBootstrapping, setAppBootstrapping] = useState(false);
-  let [isVideoLoading, setVideoLoading] = useState(false);
-  let [activePrompt, setActivePrompt] = useState("select_video"); // select_video, answer_challenge, watch_video
 
-  const iFrameLoaded = () => {
-    setAppBootstrapping(false)
-    setVideoLoading(false);
+  // TODO make enums: none, select_video, answer_challenge
+  let [activePrompt, setActivePrompt] = useState("select_video");
+
+  const loadSelectVideoPrompt = () => {
+    setActivePrompt("select_video");
   }
 
-  const videoSelectHandler: MouseEventHandler = (event) => {
-    // TODO find way to pass video URL here
-    setVideoLoading(true);
+  const videoSelectHandler: Function = (videoUrl: string) => {
+    // TODO logic goes here to show challenges if applicable.
     setActiveVideoUrl(videoUrl);
+    setActivePrompt("none");
   };
 
   return (
@@ -30,15 +27,16 @@ export default function Viewer(data: { channel: Channel }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      {/* TODO this iframe and logic should be its own component */}
-      {/* <iframe onLoad={iFrameLoaded} className={styles.iframe} id="the-iframe" src={activeVideoUrl} title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe> */}
+      <VideoPlayer
+        onVideoClicked={loadSelectVideoPrompt}
+        videoUrl={activeVideoUrl}
+      />
 
-      <div className={[styles.baseOverlay, isAppBootstrapping ? '' : styles.fullyTransparent].join(" ")}>
-        { activePrompt==="select_video" && (<SelectVideo onVideoSelect={videoSelectHandler} videos={data.channel.videos} />)}
-      </div>
-
-      {/* TODO Is isAppBootstrapping necessary? */}
-      { isAppBootstrapping && (<Loading />) }
+      <VideoSelector
+        visible={activePrompt==="select_video"}
+        onVideoSelect={videoSelectHandler}
+        videos={data.channel.videos}
+      />
 
     </div>
   )
