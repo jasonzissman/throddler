@@ -1,8 +1,12 @@
 .videoItem {
     display: inline-block;
     cursor: pointer;
-    margin: 10px;
+    margin: 4px;
+    width: 24%
+}
+.videoItem:hover {
+    opacity: .85
 }
 .videoItem img {
-    width: 240px;
+    width: 100%;
 }

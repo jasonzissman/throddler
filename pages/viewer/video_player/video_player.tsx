@@ -3,13 +3,11 @@ import { useState } from 'react';
 
 export default function VideoPlayer(data: {
   onVideoClicked: Function,
-  videoUrl: string
+  videoUrl: string,
+  isPlaying: boolean
 }) {
 
-  let [isPlaying, setIsPlaying] = useState(true);
-
   const onClickOverlay = () => {
-    setIsPlaying(false);
     data.onVideoClicked();
   }
 
@@ -22,7 +20,7 @@ export default function VideoPlayer(data: {
       {data.videoUrl && <iframe
         className={styles.iframe}
         id="the-iframe"
-        src={`${data.videoUrl}${isPlaying && '?autoplay=1'}`}
+        src={`${data.videoUrl}${data.isPlaying ? '?autoplay=1' : ''}`}
         title="YouTube video player"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
       </iframe>

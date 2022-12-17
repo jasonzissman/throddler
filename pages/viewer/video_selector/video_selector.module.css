@@ -9,7 +9,7 @@
     z-index: 5;
     cursor: pointer;
     text-align: center;
-    padding: 60px;
+    padding: 16px;
 }
 .visibleFadeIn {
     opacity: 1;
@@ -25,7 +25,7 @@
 .invisibleFadeOut {
     opacity: 0;
     z-index: 0;
-    animation: FadeOut 1s;
+    animation: FadeOut 2s;
 }
 @keyframes FadeOut {
     0% { opacity: 1; z-index: 5;}
