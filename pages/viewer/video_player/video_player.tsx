@@ -1,22 +1,35 @@
 import styles from './video_player.module.css'
+import { memo } from 'react';
 import YouTube, { YouTubePlayer, YouTubeProps } from 'react-youtube';
 
-export default function VideoPlayer(data: {
+// TODO is memo preventing excessive renders as desired? We only want it
+// to rerender when videoId changes.
+
+// The underlying YoutubePlayer component should
+// only rerender when the videoID changes since
+// it's an expensive operation. Other interactions
+// (pause video, etc.) should not cause a rerender.
+
+type VideoPlayerProps = {
   onVideoClicked: Function,
   videoId: string
-}) {
+};
+
+
+// TODO this is not being invoked. Why?
+const isEqual = (prevProps: VideoPlayerProps, nextProps: VideoPlayerProps) => {
+  return prevProps.videoId === nextProps.videoId
+};
+
+export const VideoPlayer = memo((data: VideoPlayerProps) => {
+
+  if (!data.videoId) {
+    return <div>Select a video...</div>
+  }
 
   let ytPlayer: YouTubePlayer;
   const onPlayerReady: YouTubeProps['onReady'] = (event) => {
     ytPlayer = event.target;
-  }
-
-  const onYtVideoReady = () => {
-    console.log(`onYtVideoReady`)
-  }
-
-  const onYtStateChange = () => {
-    console.log(`onYtStateChange`)
   }
 
   const onClickOverlay = () => {
@@ -49,5 +62,4 @@ export default function VideoPlayer(data: {
   )
 
 
-}
-
+}, isEqual)

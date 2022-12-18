@@ -2,7 +2,7 @@ import Head from 'next/head'
 import { useState } from 'react';
 import { Channel } from '../../lib/channel'
 import { VideoSelector } from './video_selector/video_selector'
-import VideoPlayer from './video_player/video_player'
+import { VideoPlayer } from './video_player/video_player'
 
 export default function Viewer(data: { channel: Channel }) {
   let [activeVideoId, setActiveVideoId] = useState('');
