@@ -1,11 +1,10 @@
 import styles from './video_selector_item.module.css'
 
-export function VideoSelectorItem(data: { videoUrl: string, onVideoSelect: Function }) {
-  const id = data.videoUrl.split("embed/")[1];
-  const imageUrl = `https://img.youtube.com/vi/${id}/0.jpg`;
+export function VideoSelectorItem(data: { videoId: string, onVideoSelect: Function }) {
+  const imageUrl = `https://img.youtube.com/vi/${data.videoId}/0.jpg`;
   return (
     <div
-      onClick={e => { data.onVideoSelect(data.videoUrl) }}
+      onClick={e => { data.onVideoSelect(data.videoId) }}
       className={styles.videoItem}>
       <img src={imageUrl} />
     </div>

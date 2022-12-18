@@ -9,11 +9,11 @@ export function VideoSelector(data: {
   return (
     <div className={[styles.videoSelector, data.visible ? styles.visibleFadeIn : styles.invisibleFadeOut].join(" ")}>
       {
-        data.videos.map(function (videoUrl) {
+        data.videos.map(function (videoId) {
           return <VideoSelectorItem
-            key={videoUrl}
+            key={videoId}
             onVideoSelect={data.onVideoSelect}
-            videoUrl={videoUrl} />
+            videoId={videoId} />
         })
       }
     </div>

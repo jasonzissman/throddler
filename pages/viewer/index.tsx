@@ -5,21 +5,18 @@ import { VideoSelector } from './video_selector/video_selector'
 import VideoPlayer from './video_player/video_player'
 
 export default function Viewer(data: { channel: Channel }) {
-  let [activeVideoUrl, setActiveVideoUrl] = useState('');
-  let [isVideoPlaying, setIsVideoPlaying] = useState(false);
+  let [activeVideoId, setActiveVideoId] = useState('');
   // TODO make enums: none, select_video, answer_challenge
   let [activePrompt, setActivePrompt] = useState("select_video");
 
   const loadSelectVideoPrompt = () => {
-    setIsVideoPlaying(false);
     setActivePrompt("select_video");
   }
 
-  const videoSelectHandler: Function = (videoUrl: string) => {
+  const videoSelectHandler: Function = (videoId: string) => {
     // TODO logic goes here to show challenges if applicable.
-    setActiveVideoUrl(videoUrl);
+    setActiveVideoId(videoId);
     setActivePrompt("none");
-    setIsVideoPlaying(true);
   };
 
   return (
@@ -31,12 +28,11 @@ export default function Viewer(data: { channel: Channel }) {
 
       <VideoPlayer
         onVideoClicked={loadSelectVideoPrompt}
-        videoUrl={activeVideoUrl}
-        isPlaying={isVideoPlaying}
+        videoId={activeVideoId}
       />
 
       <VideoSelector
-        visible={activePrompt==="select_video"}
+        visible={activePrompt === "select_video"}
         onVideoSelect={videoSelectHandler}
         videos={data.channel.videos}
       />
