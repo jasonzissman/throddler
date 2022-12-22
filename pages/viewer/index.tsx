@@ -5,14 +5,18 @@ import { VideoSelector } from './video_selector/video_selector'
 import { VideoPlayer } from './video_player/video_player'
 import { VideoApi } from './video_player/video_api';
 
+enum Prompts {
+  NONE,
+  SELECT_VIDEO,
+  ANSWER_CHALLENGE
+}
+
 export default function Viewer(data: { channel: Channel }) {
   let [activeVideoId, setActiveVideoId] = useState('');
-
-  // TODO make enums: none, select_video, answer_challenge
-  let [activePrompt, setActivePrompt] = useState("select_video");
+  let [activePrompt, setActivePrompt] = useState(Prompts.SELECT_VIDEO);
 
   const loadSelectVideoPrompt = () => {
-    setActivePrompt("select_video");
+    setActivePrompt(Prompts.SELECT_VIDEO);
   }
 
   const videoSelectHandler: Function = (videoId: string) => {
@@ -23,7 +27,7 @@ export default function Viewer(data: { channel: Channel }) {
       VideoApi.loadVideo(videoId);
       setActiveVideoId(videoId)
     }
-    setActivePrompt("none");
+    setActivePrompt(Prompts.NONE);
   };
 
   return (
@@ -38,7 +42,7 @@ export default function Viewer(data: { channel: Channel }) {
       />
 
       <VideoSelector
-        visible={activePrompt === "select_video"}
+        visible={activePrompt === Prompts.SELECT_VIDEO}
         onVideoSelect={videoSelectHandler}
         videos={data.channel.videos}
       />
