@@ -3,7 +3,7 @@
     width: 100vw;
     display: inline;
 }
-.iframe {
+.videoContainer {
     display: inline;
     border: none;
     background: #000;
