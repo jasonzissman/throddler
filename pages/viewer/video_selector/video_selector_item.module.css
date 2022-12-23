@@ -2,7 +2,8 @@
     display: inline-block;
     cursor: pointer;
     margin: 4px;
-    width: 24%
+    width: 24%;
+    min-width: 176px;
 }
 .videoItem:hover {
     opacity: .85

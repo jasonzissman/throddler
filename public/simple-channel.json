@@ -2,6 +2,9 @@
     "id": "channel-id-1",
     "name": "Jason's First Challenge",
     "videos": [
+      "jENjATC1ch0",
+      "nW40QQ-yX9s",
+      "75NQK-Sm1YY",
       "wZW5eQDGXWs",
       "rX0HNJ53eW0",
       "nz2RQTdVRZ8",
@@ -119,10 +122,31 @@
         "correct": false
       }
     ]
+    },  {
+      "id": "6",
+      "type": "MULTIPLE_CHOICE",
+      "graphic": "forklift.png",
+      "answers": [{
+        "value": "Forklift",
+        "correct": true
+      }, {
+        "value": "Dog",
+        "correct": false
+      }, {
+        "value": "Tree",
+        "correct": false
+      }, {
+        "value": "Cat",
+        "correct": false
+      }, {
+        "value": "Truck",
+        "correct": false
+      }
+    ]
     }],
     "playbackConfig": {
       "id": "1",
       "name": "2",
-      "playbackTimeBetweenChallenges": 10000
+      "playbackTimeBetweenChallenges": 120000
     }
   }
