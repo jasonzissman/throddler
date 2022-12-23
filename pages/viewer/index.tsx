@@ -7,6 +7,7 @@ import { VideoPlayer } from './video_player/video_player'
 import { VideoApi } from './video_player/video_api';
 import { PlaybackTimeElapsedMonitor } from './PlaybackTimeElapsedMonitor';
 import { ChallengeModal } from './challenge/challenge_modal';
+import { Challenge } from '../../lib/challenge';
 import Confetti from 'react-confetti';
 
 enum Prompts {
@@ -21,14 +22,22 @@ let monitor: PlaybackTimeElapsedMonitor;
 export default function Viewer(data: { channel: Channel }) {
   let [activeVideoId, setActiveVideoId] = useState('');
   let [activePrompt, setActivePrompt] = useState(Prompts.SELECT_VIDEO);
+  let [activeChallengeId, setActiveChallengeId] = useState('');
+  let [completedChallenges, setCompletedChallenges] = useState<string[]>([]);
   let [showConfetti, setShowConfetti] = useState(false);
+
+  const loadChallenge = () => {
+    let nextChallenge = data.channel.challenges.find(c => !completedChallenges.includes(c.id)) || data.channel.challenges[0];
+    setActiveChallengeId(nextChallenge.id)
+    setActivePrompt(Prompts.ANSWER_CHALLENGE);
+  }
 
   useEffect(() => {
     if (!monitor) {
       monitor = new PlaybackTimeElapsedMonitor(data.channel.playbackConfig.playbackTimeBetweenChallenges, () => {
         monitor.pauseTimer();
         VideoApi.pauseVideo();
-        setActivePrompt(Prompts.ANSWER_CHALLENGE);
+        loadChallenge();
       });
     }
   }, []);
@@ -40,6 +49,12 @@ export default function Viewer(data: { channel: Channel }) {
   }
 
   const challengePassedHandler: Function = () => {
+    completedChallenges.push(activeChallengeId)
+    if (data.channel.challenges.every(c => completedChallenges.includes(c.id))) {
+      // All challenges completed, cycle through them again
+      completedChallenges = [];
+    }
+    setCompletedChallenges(completedChallenges);
     setShowConfetti(true);
     VideoApi.playVideo();
     monitor.startTimer();
@@ -49,14 +64,16 @@ export default function Viewer(data: { channel: Channel }) {
   const videoSelectHandler: Function = (videoId: string) => {
     if (videoId === activeVideoId) {
       monitor.resumeTimer();
-      VideoApi.playVideo()
+      VideoApi.playVideo();
       setActivePrompt(Prompts.NONE);
     } else {
       VideoApi.loadVideo(videoId);
       setActiveVideoId(videoId)
-      setActivePrompt(Prompts.ANSWER_CHALLENGE);
+      loadChallenge();
     }
   };
+
+  let activeChallenge: Challenge | undefined = data.channel.challenges.find(c => activeChallengeId === c.id);
 
   return (
     <div>
@@ -66,9 +83,9 @@ export default function Viewer(data: { channel: Channel }) {
       </Head>
 
       {showConfetti &&
-        <Confetti 
+        <Confetti
           className={styles.confetti}
-          width={window.innerWidth} 
+          width={window.innerWidth}
           height={window.innerHeight}
           numberOfPieces={300}
           initialVelocityY={20}
@@ -88,11 +105,12 @@ export default function Viewer(data: { channel: Channel }) {
         videos={data.channel.videos}
       />
 
-      <ChallengeModal
+      {activeChallenge && <ChallengeModal
         visible={activePrompt === Prompts.ANSWER_CHALLENGE}
         onChallengePassed={challengePassedHandler}
-        challenges={data.channel.challenges}
+        activeChallenge={activeChallenge}
       />
+      }
 
     </div>
   )
