@@ -131,7 +131,9 @@ const randomizeChallengeData = (channel:Channel) => {
 }
 
 export async function getServerSideProps() {
-  const res = await fetch(`http://localhost:3000/simple-channel.json`)
+  
+  const host = process.env.NODE_ENV === 'production' ? 'https://https://throddler.vercel.app' : 'http://localhost:3000';
+  const res = await fetch(`${host}/simple-channel.json`)
   const channel:Channel = await res.json()
   randomizeChallengeData(channel)
   return { props: { channel } }
