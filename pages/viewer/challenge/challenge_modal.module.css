@@ -59,3 +59,10 @@
 .answersHolder button:hover {
     opacity: 0.85;
 }
+.answersHolder button.answeredIncorrectly {
+    cursor: default;
+    background-color: #F66;
+}
+.answersHolder button.answeredIncorrectly:hover {
+    opacity: 1;
+}

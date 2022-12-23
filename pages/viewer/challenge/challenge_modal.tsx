@@ -9,11 +9,14 @@ export function ChallengeModal(data: {
   activeChallenge: Challenge
 }) {
 
+  let [incorrectResponses, setIncorrectResponses] = useState(['']);
+
   let answerClickedHandler = (answer: Answer) => {
     if (answer.correct) {
       challengePassedHandler()
     } else {
-      // TODO
+      let newIncorrectResponses = [...incorrectResponses, answer.value];
+      setIncorrectResponses(newIncorrectResponses);
     }
   };
 
@@ -33,8 +36,9 @@ export function ChallengeModal(data: {
       <div className={styles.answersHolder}>
         {data.activeChallenge.answers.map(a => {
           return <button
+            className={incorrectResponses.includes(a.value) ? styles.answeredIncorrectly: ''}
             key={`${data.activeChallenge.id}_${a.value}`}
-            onClick={e => { answerClickedHandler(a) }}
+            onClick={e => { if (!incorrectResponses.includes(a.value)) {answerClickedHandler(a)} }}
           >
             {a.value}
           </button>
