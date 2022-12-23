@@ -1,4 +1,4 @@
-.videoSelector {
+.challengeModal {
     background-color:rgba(0, 0, 0);
     opacity: 0;
     display: inline;
@@ -10,6 +10,7 @@
     cursor: pointer;
     text-align: center;
     padding: 16px;
+    color: white;
 }
 .visibleFadeIn {
     opacity: 1;

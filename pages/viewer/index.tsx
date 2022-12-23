@@ -1,9 +1,11 @@
 import Head from 'next/head'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Channel } from '../../lib/channel'
-import { VideoSelector } from './video_selector/video_selector'
+import { VideoSelectorModal } from './video_selector/video_selector_modal'
 import { VideoPlayer } from './video_player/video_player'
 import { VideoApi } from './video_player/video_api';
+import { PlaybackTimeElapsedMonitor } from './PlaybackTimeElapsedMonitor';
+import { ChallengeModal } from './challenge/challenge_modal';
 
 enum Prompts {
   NONE,
@@ -11,23 +13,35 @@ enum Prompts {
   ANSWER_CHALLENGE
 }
 
+let monitor: PlaybackTimeElapsedMonitor;
+
 export default function Viewer(data: { channel: Channel }) {
   let [activeVideoId, setActiveVideoId] = useState('');
   let [activePrompt, setActivePrompt] = useState(Prompts.SELECT_VIDEO);
 
+  useEffect(() => {
+    // Set up timer to periodically show challenges
+    monitor = new PlaybackTimeElapsedMonitor(data.channel.playbackConfig.playbackTimeBetweenChallenges, () => {
+      monitor.pauseTimer();
+      VideoApi.pauseVideo();
+      setActivePrompt(Prompts.ANSWER_CHALLENGE);
+    });
+  }, []);
+
   const loadSelectVideoPrompt = () => {
+    VideoApi.pauseVideo();
     setActivePrompt(Prompts.SELECT_VIDEO);
   }
 
-  const videoSelectHandler: Function = (videoId: string) => {
-    // TODO logic goes here to show challenges if applicable.
-    if (videoId === activeVideoId) {
+  const videoSelectHandler: Function = (videoId?: string) => {
+    if (!videoId || videoId === activeVideoId) {
       VideoApi.playVideo();
     } else {
       VideoApi.loadVideo(videoId);
       setActiveVideoId(videoId)
     }
     setActivePrompt(Prompts.NONE);
+    monitor.resumeTimer();
   };
 
   return (
@@ -41,10 +55,15 @@ export default function Viewer(data: { channel: Channel }) {
         onVideoClicked={loadSelectVideoPrompt}
       />
 
-      <VideoSelector
+      <VideoSelectorModal
         visible={activePrompt === Prompts.SELECT_VIDEO}
         onVideoSelect={videoSelectHandler}
         videos={data.channel.videos}
+      />
+
+      <ChallengeModal
+        visible={activePrompt === Prompts.ANSWER_CHALLENGE}
+        onChallengePassed={loadSelectVideoPrompt}
       />
 
     </div>

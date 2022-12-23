@@ -18,6 +18,7 @@
     "challenges": [],
     "playbackConfig": {
       "id": "1",
-      "name": "2"
+      "name": "2",
+      "playbackTimeBetweenChallenges": 5000
     }
   }

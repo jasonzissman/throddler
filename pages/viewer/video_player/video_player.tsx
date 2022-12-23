@@ -1,5 +1,4 @@
 import styles from './video_player.module.css'
-import { VideoApi } from './video_api'
 
 type VideoPlayerProps = {
   onVideoClicked: Function,
@@ -8,7 +7,6 @@ type VideoPlayerProps = {
 export const VideoPlayer = (data: VideoPlayerProps) => {
 
   const onClickOverlay = () => {
-    VideoApi.pauseVideo();
     data.onVideoClicked();
   }
 
