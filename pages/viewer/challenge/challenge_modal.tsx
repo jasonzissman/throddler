@@ -3,7 +3,7 @@ import styles from './challenge_modal.module.css'
 import { useState } from "react"
 // TODO commonize common css styles
 
-export function ChallengeModal(data: {
+export default function ChallengeModal(data: {
   visible: boolean,
   onChallengePassed: Function,
   activeChallenge: Challenge
@@ -31,6 +31,7 @@ export function ChallengeModal(data: {
     >
 
       <div className={styles.questionHolder}>
+        {/* TODO use <IMAGE> tag  */}
         <img src={`images/challenges/${data.activeChallenge.graphic}`}></img>
       </div>
 

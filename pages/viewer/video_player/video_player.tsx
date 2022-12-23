@@ -4,7 +4,7 @@ type VideoPlayerProps = {
   onVideoClicked: Function,
 };
 
-export const VideoPlayer = (data: VideoPlayerProps) => {
+export default function VideoPlayer(data: VideoPlayerProps) {
 
   const onClickOverlay = () => {
     data.onVideoClicked();

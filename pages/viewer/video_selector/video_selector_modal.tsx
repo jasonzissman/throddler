@@ -1,7 +1,7 @@
 import styles from './video_selector_modal.module.css'
-import { VideoSelectorItem } from './video_selector_item';
+import VideoSelectorItem from './video_selector_item';
 
-export function VideoSelectorModal(data: { 
+export default function VideoSelectorModal(data: { 
   videos: string[], 
   onVideoSelect: Function,
   visible: boolean
