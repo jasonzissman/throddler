@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import styles from './viewer.module.css'
 import { useState, useEffect } from 'react';
 import { Channel } from '../../lib/channel'
 import { VideoSelectorModal } from './video_selector/video_selector_modal'
@@ -6,6 +7,7 @@ import { VideoPlayer } from './video_player/video_player'
 import { VideoApi } from './video_player/video_api';
 import { PlaybackTimeElapsedMonitor } from './PlaybackTimeElapsedMonitor';
 import { ChallengeModal } from './challenge/challenge_modal';
+import Confetti from 'react-confetti';
 
 enum Prompts {
   NONE,
@@ -19,6 +21,7 @@ let monitor: PlaybackTimeElapsedMonitor;
 export default function Viewer(data: { channel: Channel }) {
   let [activeVideoId, setActiveVideoId] = useState('');
   let [activePrompt, setActivePrompt] = useState(Prompts.SELECT_VIDEO);
+  let [showConfetti, setShowConfetti] = useState(false);
 
   useEffect(() => {
     if (!monitor) {
@@ -37,6 +40,7 @@ export default function Viewer(data: { channel: Channel }) {
   }
 
   const challengePassedHandler: Function = () => {
+    setShowConfetti(true);
     VideoApi.playVideo();
     monitor.startTimer();
     setActivePrompt(Prompts.NONE);
@@ -60,6 +64,19 @@ export default function Viewer(data: { channel: Channel }) {
         <title>Throddler</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
+      {showConfetti &&
+        <Confetti 
+          className={styles.confetti}
+          width={window.innerWidth} 
+          height={window.innerHeight}
+          numberOfPieces={300}
+          initialVelocityY={20}
+          onConfettiComplete={() => {
+            setShowConfetti(false);
+          }}
+          recycle={false} />
+      }
 
       <VideoPlayer
         onVideoClicked={loadSelectVideoPrompt}

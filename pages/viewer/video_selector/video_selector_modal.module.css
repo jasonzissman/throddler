@@ -6,21 +6,21 @@
     height: 100%;
     width: 100%;
     position: absolute;
-    z-index: 5;
+    z-index: 1;
     cursor: pointer;
     text-align: center;
     padding: 16px;
 }
 .visibleFadeIn {
     opacity: 1;
-    z-index: 5;
+    z-index: 1;
     animation: FadeIn .15s;
 }
 @keyframes FadeIn {
     0% { opacity: 0; z-index: 0;}
-    50% { opacity: 0; z-index: 5;}
-    99% {  opacity: .98; z-index: 5;}
-    100% { opacity: 1; z-index: 5;}
+    50% { opacity: 0; z-index: 1;}
+    99% {  opacity: .98; z-index: 1;}
+    100% { opacity: 1; z-index: 1;}
 }
 .invisibleFadeOut {
     opacity: 0;
@@ -28,8 +28,8 @@
     animation: FadeOut 2s;
 }
 @keyframes FadeOut {
-    0% { opacity: 1; z-index: 5;}
-    50% { opacity: 1; z-index: 5;}
-    99% { opacity: .02; z-index: 5;}
+    0% { opacity: 1; z-index: 1;}
+    50% { opacity: 1; z-index: 1;}
+    99% { opacity: .02; z-index: 1;}
     100% { opacity: 0; z-index: 0;}
 }

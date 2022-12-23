@@ -16,8 +16,59 @@
       "Zp4TRfKbzdA"
     ],
     "challenges": [{
-      "id": 123,
-      "name": "ok"
+      "id": "1",
+      "type": "MULTIPLE_CHOICE",
+      "graphic": "doctor.png",
+      "answers": [{
+        "value": "Doctor",
+        "correct": true
+      }, {
+        "value": "Cat",
+        "correct": false
+      }, {
+        "value": "Garbage Truck",
+        "correct": false
+      }, {
+        "value": "School",
+        "correct": false
+      }
+    ]
+    }, {
+      "id": "2",
+      "type": "MULTIPLE_CHOICE",
+      "graphic": "banana.png",
+      "answers": [{
+        "value": "Banana",
+        "correct": true
+      }, {
+        "value": "Family",
+        "correct": false
+      }, {
+        "value": "Cookie",
+        "correct": false
+      }, {
+        "value": "Bus",
+        "correct": false
+      }
+    ]
+    }, {
+      "id": "3",
+      "type": "MULTIPLE_CHOICE",
+      "graphic": "tree.png",
+      "answers": [{
+        "value": "Tree",
+        "correct": true
+      }, {
+        "value": "Bus",
+        "correct": false
+      }, {
+        "value": "Recycle",
+        "correct": false
+      }, {
+        "value": "Doctor",
+        "correct": false
+      }
+    ]
     }],
     "playbackConfig": {
       "id": "1",

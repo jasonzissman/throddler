@@ -1,3 +1,4 @@
+/** TODO commonize with video selector modal!!!! **/
 .challengeModal {
     background-color:rgba(0, 0, 0);
     opacity: 0;
@@ -6,7 +7,7 @@
     height: 100%;
     width: 100%;
     position: absolute;
-    z-index: 5;
+    z-index: 1;
     cursor: pointer;
     text-align: center;
     padding: 16px;
@@ -14,23 +15,48 @@
 }
 .visibleFadeIn {
     opacity: 1;
-    z-index: 5;
+    z-index: 1;
     animation: FadeIn .15s;
 }
 @keyframes FadeIn {
     0% { opacity: 0; z-index: 0;}
-    50% { opacity: 0; z-index: 5;}
-    99% {  opacity: .98; z-index: 5;}
-    100% { opacity: 1; z-index: 5;}
+    50% { opacity: 0; z-index: 1;}
+    99% {  opacity: .98; z-index: 1;}
+    100% { opacity: 1; z-index: 1;}
 }
 .invisibleFadeOut {
     opacity: 0;
     z-index: 0;
-    animation: FadeOut 2s;
+    animation: FadeOut 3s;
 }
 @keyframes FadeOut {
-    0% { opacity: 1; z-index: 5;}
-    50% { opacity: 1; z-index: 5;}
-    99% { opacity: .02; z-index: 5;}
+    0% { opacity: 1; z-index: 1;}
+    50% { opacity: 1; z-index: 1;}
+    99% { opacity: .02; z-index: 1;}
     100% { opacity: 0; z-index: 0;}
+}
+.questionHolder {
+    padding: 16px;
+    height: calc(100% - 160px);
+}
+.questionHolder img {
+    max-height: 100%;
+    max-width: 100%;
+}
+.answersHolder {
+    position: fixed;
+    bottom: 0px;
+    text-align: center;
+    width: 95%;
+    padding: 16px;
+}
+.answersHolder button {
+    text-transform: uppercase;
+    cursor: pointer;
+    padding: 16px;
+    margin: 8px;
+    font-size: 1.25em;
+}
+.answersHolder button:hover {
+    opacity: 0.85;
 }

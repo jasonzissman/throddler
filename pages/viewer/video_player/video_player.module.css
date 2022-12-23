@@ -10,7 +10,7 @@
     height: 100%;
     width: 100%;
     position: absolute;
-    z-index: 4;
+    z-index: 0;
 }
 .overlay {
     background-color:rgba(0, 0, 0, .0);
@@ -18,6 +18,6 @@
     height: 100%;
     width: 100%;
     position: absolute;
-    z-index: 5;
+    z-index: 1;
     cursor: pointer;
 }
