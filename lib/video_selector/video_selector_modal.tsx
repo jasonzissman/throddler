@@ -9,9 +9,10 @@ export default function VideoSelectorModal(data: {
   return (
     <div className={[styles.videoSelectorModal, data.visible ? styles.visibleFadeIn : styles.invisibleFadeOut].join(" ")}>
       {
-        data.videos.map(function (videoId) {
+        data.videos.map(function (videoId, index) {
           return <VideoSelectorItem
             key={videoId}
+            index={index}
             onVideoSelect={data.onVideoSelect}
             videoId={videoId} />
         })

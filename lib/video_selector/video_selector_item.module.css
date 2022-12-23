@@ -4,10 +4,19 @@
     margin: 4px;
     width: 24%;
     min-width: 176px;
+    min-height: 128px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size:     cover;    
 }
 .videoItem:hover {
     opacity: .85
 }
-.videoItem img {
-    width: 100%;
+.divWithNumber{
+    width: 32px;
+    padding: 2px;
+    right: 7px;
+    background-color: rgba(0,0,0,0.65);
+    position: relative;
+    color: white;
 }
