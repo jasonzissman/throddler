@@ -1,3 +1,11 @@
+declare global {
+    interface Window {
+        onYouTubePlayerAPIReady:any;
+        YT: any
+    }
+}
+
+
 export class VideoApi {
 
     // This is a bit of a hack but it provides good insulation around
@@ -21,7 +29,7 @@ export class VideoApi {
         this.ytPlayer = new Promise(resolve => {
             window.onYouTubePlayerAPIReady = () => {
                 let thePlayer: any;
-                thePlayer = new YT.Player('the-video-container', {
+                thePlayer = new window.YT.Player('the-video-container', {
                     videoId: videoId,
                     playerVars: {'enablejsapi': 1 },
                     events: {
