@@ -5,7 +5,7 @@ import styles from '../styles/Home.module.css'
 export default function Home() {
   return (
     <div>
-      Root page of app
+      Hello world - Root page of app
     </div>
   )
 }
