@@ -116,8 +116,23 @@ export default function Viewer(data: { channel: Channel }) {
   )
 }
 
+const randomizeArray = (array:any[]) => {
+  for (let i = array.length -1; i > 0; i--) {
+    let j = Math.floor(Math.random() * i);
+    let k = array[i];
+    array[i] = array[j];
+    array[j] = k;
+  }
+}
+
+const randomizeChallengeData = (channel:Channel) => {
+  channel.challenges.forEach(c => randomizeArray(c.answers));
+  randomizeArray(channel.challenges);
+}
+
 export async function getServerSideProps() {
   const res = await fetch(`http://localhost:3000/simple-channel.json`)
-  const channel = await res.json()
+  const channel:Channel = await res.json()
+  randomizeChallengeData(channel)
   return { props: { channel } }
 }
