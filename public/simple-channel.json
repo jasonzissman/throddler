@@ -15,7 +15,10 @@
       "-HAZ9iHRUrw",
       "Zp4TRfKbzdA"
     ],
-    "challenges": [],
+    "challenges": [{
+      "id": 123,
+      "name": "ok"
+    }],
     "playbackConfig": {
       "id": "1",
       "name": "2",

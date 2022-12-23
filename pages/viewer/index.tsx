@@ -74,6 +74,7 @@ export default function Viewer(data: { channel: Channel }) {
       <ChallengeModal
         visible={activePrompt === Prompts.ANSWER_CHALLENGE}
         onChallengePassed={challengePassedHandler}
+        challenges={data.channel.challenges}
       />
 
     </div>
