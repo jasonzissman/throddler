@@ -13,6 +13,7 @@ enum Prompts {
   ANSWER_CHALLENGE
 }
 
+// TODO should VideoApi also be a component var like this?
 let monitor: PlaybackTimeElapsedMonitor;
 
 export default function Viewer(data: { channel: Channel }) {
@@ -35,17 +36,22 @@ export default function Viewer(data: { channel: Channel }) {
     setActivePrompt(Prompts.SELECT_VIDEO);
   }
 
-  const videoSelectHandler: Function = (videoId?: string) => {
-    if (!videoId || videoId === activeVideoId) {
-      VideoApi.playVideo();
+  const challengePassedHandler: Function = () => {
+    VideoApi.playVideo();
+    monitor.startTimer();
+    setActivePrompt(Prompts.NONE);
+  };
+
+  const videoSelectHandler: Function = (videoId: string) => {
+    if (videoId === activeVideoId) {
       monitor.resumeTimer();
+      VideoApi.playVideo()
+      setActivePrompt(Prompts.NONE);
     } else {
       VideoApi.loadVideo(videoId);
-      monitor.startTimer();
       setActiveVideoId(videoId)
+      setActivePrompt(Prompts.ANSWER_CHALLENGE);
     }
-    setActivePrompt(Prompts.NONE);
-    
   };
 
   return (
@@ -67,7 +73,7 @@ export default function Viewer(data: { channel: Channel }) {
 
       <ChallengeModal
         visible={activePrompt === Prompts.ANSWER_CHALLENGE}
-        onChallengePassed={videoSelectHandler}
+        onChallengePassed={challengePassedHandler}
       />
 
     </div>

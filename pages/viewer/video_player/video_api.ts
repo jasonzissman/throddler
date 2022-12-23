@@ -40,7 +40,7 @@ export class VideoApi {
     }
 
     public static async loadVideo(videoId: string) {
-        (await this.getPlayer(videoId)).loadVideoById(videoId)
+        (await this.getPlayer(videoId)).cueVideoById(videoId)
     }
 
     public static async pauseVideo() {

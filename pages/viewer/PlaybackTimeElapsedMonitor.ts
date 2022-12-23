@@ -32,8 +32,10 @@ export class PlaybackTimeElapsedMonitor {
     private _startTimer() {
         this.timerLastStarted = new Date().getTime();
         this.intervalId = setTimeout(() => {
+            console.log(`handler fired`)
             this.handler();
         }, this.resumeTimeLeft);
+        console.log(`timer started for ${this.resumeTimeLeft} ms`)
     }
 
 }
