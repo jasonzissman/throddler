@@ -2,11 +2,11 @@ import Head from 'next/head'
 import styles from './viewer.module.css'
 import { useState, useEffect } from 'react';
 import { Channel } from '../../lib/channel'
-import VideoSelectorModal from './video_selector/video_selector_modal'
-import VideoPlayer from './video_player/video_player'
+import VideoSelectorModal from '../../lib/video_selector/video_selector_modal'
+import VideoPlayer from '../../lib/video_player/video_player'
 import { VideoApi } from '../../lib/video_api';
 import { PlaybackTimeElapsedMonitor } from '../../lib/PlaybackTimeElapsedMonitor';
-import ChallengeModal from './challenge/challenge_modal';
+import ChallengeModal from '../../lib/challenge/challenge_modal';
 import { Challenge } from '../../lib/challenge';
 import Confetti from 'react-confetti';
 

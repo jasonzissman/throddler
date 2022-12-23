@@ -1,4 +1,4 @@
-import { Answer, Challenge } from '../../../lib/challenge'
+import { Answer, Challenge } from '../challenge'
 import styles from './challenge_modal.module.css'
 import { useState } from "react"
 // TODO commonize common css styles
