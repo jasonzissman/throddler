@@ -8,7 +8,7 @@ export function ChallengeModal(data: {
  }) {
   return (
     <div className={[styles.challengeModal, data.visible ? styles.visibleFadeIn : styles.invisibleFadeOut].join(" ")}
-      onClick={e => {data.onChallengePassed}}
+      onClick={e => {data.onChallengePassed()}}
     >
       CHALLENGE!!!
     </div>

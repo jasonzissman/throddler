@@ -20,28 +20,32 @@ export default function Viewer(data: { channel: Channel }) {
   let [activePrompt, setActivePrompt] = useState(Prompts.SELECT_VIDEO);
 
   useEffect(() => {
-    // Set up timer to periodically show challenges
-    monitor = new PlaybackTimeElapsedMonitor(data.channel.playbackConfig.playbackTimeBetweenChallenges, () => {
-      monitor.pauseTimer();
-      VideoApi.pauseVideo();
-      setActivePrompt(Prompts.ANSWER_CHALLENGE);
-    });
+    if (!monitor) {
+      monitor = new PlaybackTimeElapsedMonitor(data.channel.playbackConfig.playbackTimeBetweenChallenges, () => {
+        monitor.pauseTimer();
+        VideoApi.pauseVideo();
+        setActivePrompt(Prompts.ANSWER_CHALLENGE);
+      });
+    }
   }, []);
 
   const loadSelectVideoPrompt = () => {
     VideoApi.pauseVideo();
+    monitor.pauseTimer();
     setActivePrompt(Prompts.SELECT_VIDEO);
   }
 
   const videoSelectHandler: Function = (videoId?: string) => {
     if (!videoId || videoId === activeVideoId) {
       VideoApi.playVideo();
+      monitor.resumeTimer();
     } else {
       VideoApi.loadVideo(videoId);
+      monitor.startTimer();
       setActiveVideoId(videoId)
     }
     setActivePrompt(Prompts.NONE);
-    monitor.resumeTimer();
+    
   };
 
   return (
@@ -63,7 +67,7 @@ export default function Viewer(data: { channel: Channel }) {
 
       <ChallengeModal
         visible={activePrompt === Prompts.ANSWER_CHALLENGE}
-        onChallengePassed={loadSelectVideoPrompt}
+        onChallengePassed={videoSelectHandler}
       />
 
     </div>
