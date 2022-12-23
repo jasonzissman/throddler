@@ -10,7 +10,6 @@
       "LIP-EN7Ygro",
       "9O_eaR-8bgI",
       "YihiSqO4jnA",
-      "vUXnAr4jEZ",
       "uVXloNITTYE",
       "-HAZ9iHRUrw",
       "Zp4TRfKbzdA"
@@ -31,6 +30,9 @@
       }, {
         "value": "School",
         "correct": false
+      }, {
+        "value": "Recycle",
+        "correct": false
       }
     ]
     }, {
@@ -49,6 +51,9 @@
       }, {
         "value": "Bus",
         "correct": false
+      }, {
+        "value": "School",
+        "correct": false
       }
     ]
     }, {
@@ -66,6 +71,51 @@
         "correct": false
       }, {
         "value": "Doctor",
+        "correct": false
+      }, {
+        "value": "Family",
+        "correct": false
+      }
+    ]
+    }, {
+      "id": "4",
+      "type": "MULTIPLE_CHOICE",
+      "graphic": "dog.png",
+      "answers": [{
+        "value": "Dog",
+        "correct": true
+      }, {
+        "value": "Cat",
+        "correct": false
+      }, {
+        "value": "Love",
+        "correct": false
+      }, {
+        "value": "Mommy",
+        "correct": false
+      }, {
+        "value": "Truck",
+        "correct": false
+      }
+    ]
+    }, {
+      "id": "5",
+      "type": "MULTIPLE_CHOICE",
+      "graphic": "recycle.png",
+      "answers": [{
+        "value": "Recycle",
+        "correct": true
+      }, {
+        "value": "Cookie",
+        "correct": false
+      }, {
+        "value": "Dad",
+        "correct": false
+      }, {
+        "value": "School",
+        "correct": false
+      }, {
+        "value": "Car",
         "correct": false
       }
     ]

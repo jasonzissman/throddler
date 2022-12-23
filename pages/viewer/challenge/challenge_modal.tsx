@@ -14,6 +14,7 @@ export function ChallengeModal(data: {
   let answerClickedHandler = (answer: Answer) => {
     if (answer.correct) {
       challengePassedHandler()
+      setIncorrectResponses([]);
     } else {
       let newIncorrectResponses = [...incorrectResponses, answer.value];
       setIncorrectResponses(newIncorrectResponses);
