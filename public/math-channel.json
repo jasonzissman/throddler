@@ -1,0 +1,43 @@
+{
+  "id": "channel-id-2",
+  "name": "Jason's Math Challenge",
+  "videos": [
+    "jENjATC1ch0",
+    "nW40QQ-yX9s",
+    "75NQK-Sm1YY",
+    "wZW5eQDGXWs",
+    "rX0HNJ53eW0",
+    "nz2RQTdVRZ8",
+    "3uB4qkdqf-s",
+    "pckuS--UlV4",
+    "LIP-EN7Ygro",
+    "9O_eaR-8bgI",
+    "YihiSqO4jnA",
+    "uVXloNITTYE",
+    "-HAZ9iHRUrw",
+    "Zp4TRfKbzdA"
+  ],
+  "challenges": [
+    {
+      "id": "1",
+      "type": "MULTIPLE_CHOICE",
+      "prompt": {
+        "graphic": "doctor.png"
+      },
+      "answers": {
+        "type": "MULTIPLE_CHOICE",
+        "choices": [
+          {
+            "value": "Forklift",
+            "correct": true
+          }
+        ]
+      }
+    }
+  ],
+  "playbackConfig": {
+    "id": "1",
+    "name": "2",
+    "playbackTimeBetweenChallenges": 120000
+  }
+}

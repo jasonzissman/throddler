@@ -1,13 +1,13 @@
 import Head from 'next/head'
 import styles from './viewer.module.css'
 import { useState, useEffect } from 'react';
-import { Channel } from '../../lib/channel'
+import { Channel } from '../../lib/channel/channel'
 import VideoSelectorModal from '../../lib/video_selector/video_selector_modal'
 import VideoPlayer from '../../lib/video_player/video_player'
 import { VideoApi } from '../../lib/video_api';
 import { PlaybackTimeElapsedMonitor } from '../../lib/PlaybackTimeElapsedMonitor';
 import ChallengeModal from '../../lib/challenge/challenge_modal';
-import { Challenge } from '../../lib/challenge';
+import { Challenge } from '../../lib/challenge/challenge';
 import Confetti from 'react-confetti';
 
 enum Prompts {
@@ -112,21 +112,25 @@ export default function Viewer(data: { channel: Channel }) {
       />
       }
 
+      <a href="https://www.flaticon.com/free-icons" title="icons">Icons created by Freepik - Flaticon</a>
+
     </div>
   )
 }
 
-const randomizeArray = (array:any[]) => {
-  for (let i = array.length -1; i > 0; i--) {
-    let j = Math.floor(Math.random() * i);
-    let k = array[i];
-    array[i] = array[j];
-    array[j] = k;
+const randomizeArray = (array:any[] | undefined) => {
+  if (array) {
+    for (let i = array.length -1; i > 0; i--) {
+      let j = Math.floor(Math.random() * i);
+      let k = array[i];
+      array[i] = array[j];
+      array[j] = k;
+    }
   }
 }
 
 const randomizeChallengeData = (channel:Channel) => {
-  channel.challenges.forEach(c => randomizeArray(c.answers));
+  channel.challenges.forEach(c => randomizeArray(c.answers.choices));
   randomizeArray(channel.challenges);
 }
 

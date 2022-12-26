@@ -1,152 +1,213 @@
 {
-    "id": "channel-id-1",
-    "name": "Jason's First Challenge",
-    "videos": [
-      "jENjATC1ch0",
-      "nW40QQ-yX9s",
-      "75NQK-Sm1YY",
-      "wZW5eQDGXWs",
-      "rX0HNJ53eW0",
-      "nz2RQTdVRZ8",
-      "3uB4qkdqf-s",
-      "pckuS--UlV4",
-      "LIP-EN7Ygro",
-      "9O_eaR-8bgI",
-      "YihiSqO4jnA",
-      "uVXloNITTYE",
-      "-HAZ9iHRUrw",
-      "Zp4TRfKbzdA"
-    ],
-    "challenges": [{
+  "id": "channel-id-1",
+  "name": "Jason's First Challenge",
+  "videos": [
+    "jENjATC1ch0",
+    "nW40QQ-yX9s",
+    "75NQK-Sm1YY",
+    "wZW5eQDGXWs",
+    "rX0HNJ53eW0",
+    "nz2RQTdVRZ8",
+    "3uB4qkdqf-s",
+    "pckuS--UlV4",
+    "LIP-EN7Ygro",
+    "9O_eaR-8bgI",
+    "YihiSqO4jnA",
+    "uVXloNITTYE",
+    "-HAZ9iHRUrw",
+    "Zp4TRfKbzdA"
+  ],
+  "challenges": [
+    {
       "id": "1",
-      "type": "MULTIPLE_CHOICE",
-      "graphic": "doctor.png",
-      "answers": [{
-        "value": "Doctor",
-        "correct": true
-      }, {
-        "value": "Cat",
-        "correct": false
-      }, {
-        "value": "Garbage Truck",
-        "correct": false
-      }, {
-        "value": "School",
-        "correct": false
-      }, {
-        "value": "Recycle",
-        "correct": false
+      "prompt": {
+        "graphic": "doctor.png"
+      },
+      "answers": {
+        "type": "MULTIPLE_CHOICE",
+        "choices": [
+          {
+            "value": "Doctor",
+            "correct": true
+          },
+          {
+            "value": "Cat",
+            "correct": false
+          },
+          {
+            "value": "Garbage Truck",
+            "correct": false
+          },
+          {
+            "value": "School",
+            "correct": false
+          },
+          {
+            "value": "Recycle",
+            "correct": false
+          }
+        ]
       }
-    ]
-    }, {
-      "id": "2",
+    },
+    {
       "type": "MULTIPLE_CHOICE",
-      "graphic": "banana.png",
-      "answers": [{
-        "value": "Banana",
-        "correct": true
-      }, {
-        "value": "Family",
-        "correct": false
-      }, {
-        "value": "Cookie",
-        "correct": false
-      }, {
-        "value": "Bus",
-        "correct": false
-      }, {
-        "value": "School",
-        "correct": false
+      "prompt": {
+        "graphic": "banana.png"
+      },
+      "answers": {
+        "type": "MULTIPLE_CHOICE",
+        "choices": [
+          {
+            "value": "Banana",
+            "correct": true
+          },
+          {
+            "value": "Family",
+            "correct": false
+          },
+          {
+            "value": "Cookie",
+            "correct": false
+          },
+          {
+            "value": "Bus",
+            "correct": false
+          },
+          {
+            "value": "School",
+            "correct": false
+          }
+        ]
       }
-    ]
-    }, {
+    },
+    {
       "id": "3",
-      "type": "MULTIPLE_CHOICE",
-      "graphic": "tree.png",
-      "answers": [{
-        "value": "Tree",
-        "correct": true
-      }, {
-        "value": "Bus",
-        "correct": false
-      }, {
-        "value": "Recycle",
-        "correct": false
-      }, {
-        "value": "Doctor",
-        "correct": false
-      }, {
-        "value": "Family",
-        "correct": false
+      "prompt": {
+        "graphic": "tree.png"
+      },
+      "answers": {
+        "type": "MULTIPLE_CHOICE",
+        "choices": [
+          {
+            "value": "Tree",
+            "correct": true
+          },
+          {
+            "value": "Bus",
+            "correct": false
+          },
+          {
+            "value": "Recycle",
+            "correct": false
+          },
+          {
+            "value": "Doctor",
+            "correct": false
+          },
+          {
+            "value": "Family",
+            "correct": false
+          }
+        ]
       }
-    ]
-    }, {
+    },
+    {
       "id": "4",
-      "type": "MULTIPLE_CHOICE",
-      "graphic": "dog.png",
-      "answers": [{
-        "value": "Dog",
-        "correct": true
-      }, {
-        "value": "Cat",
-        "correct": false
-      }, {
-        "value": "Love",
-        "correct": false
-      }, {
-        "value": "Mommy",
-        "correct": false
-      }, {
-        "value": "Truck",
-        "correct": false
+      "prompt": {
+        "graphic": "dog.png"
+      },
+      "answers": {
+        "type": "MULTIPLE_CHOICE",
+        "choices": [
+          {
+            "value": "Dog",
+            "correct": true
+          },
+          {
+            "value": "Cat",
+            "correct": false
+          },
+          {
+            "value": "Love",
+            "correct": false
+          },
+          {
+            "value": "Mommy",
+            "correct": false
+          },
+          {
+            "value": "Truck",
+            "correct": false
+          }
+        ]
       }
-    ]
-    }, {
+    },
+    {
       "id": "5",
-      "type": "MULTIPLE_CHOICE",
-      "graphic": "recycle.png",
-      "answers": [{
-        "value": "Recycle",
-        "correct": true
-      }, {
-        "value": "Cookie",
-        "correct": false
-      }, {
-        "value": "Dad",
-        "correct": false
-      }, {
-        "value": "School",
-        "correct": false
-      }, {
-        "value": "Car",
-        "correct": false
+      "prompt": {
+        "graphic": "recycle.png"
+      },
+      "answers": {
+        "type": "MULTIPLE_CHOICE",
+        "choices": [
+          {
+            "value": "Recycle",
+            "correct": true
+          },
+          {
+            "value": "Cookie",
+            "correct": false
+          },
+          {
+            "value": "Dad",
+            "correct": false
+          },
+          {
+            "value": "School",
+            "correct": false
+          },
+          {
+            "value": "Car",
+            "correct": false
+          }
+        ]
       }
-    ]
-    },  {
+    },
+    {
       "id": "6",
-      "type": "MULTIPLE_CHOICE",
-      "graphic": "forklift.png",
-      "answers": [{
-        "value": "Forklift",
-        "correct": true
-      }, {
-        "value": "Dog",
-        "correct": false
-      }, {
-        "value": "Tree",
-        "correct": false
-      }, {
-        "value": "Cat",
-        "correct": false
-      }, {
-        "value": "Truck",
-        "correct": false
+      "prompt": {
+        "graphic": "forklift.png"
+      },
+      "answers": {
+        "type": "MULTIPLE_CHOICE",
+        "choices": [
+          {
+            "value": "Forklift",
+            "correct": true
+          },
+          {
+            "value": "Dog",
+            "correct": false
+          },
+          {
+            "value": "Tree",
+            "correct": false
+          },
+          {
+            "value": "Cat",
+            "correct": false
+          },
+          {
+            "value": "Truck",
+            "correct": false
+          }
+        ]
       }
-    ]
-    }],
-    "playbackConfig": {
-      "id": "1",
-      "name": "2",
-      "playbackTimeBetweenChallenges": 120000
     }
+  ],
+  "playbackConfig": {
+    "id": "1",
+    "name": "2",
+    "playbackTimeBetweenChallenges": 120000
   }
+}

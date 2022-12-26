@@ -1,4 +1,4 @@
-import { Challenge } from "./challenge";
+import { Challenge } from "../challenge/challenge";
 import { PlaybackConfig } from "./playback-config";
 
 export class Channel {

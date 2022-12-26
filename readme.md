@@ -8,6 +8,7 @@ localhost:3000
 
 ## Images
 https://pixabay.com/
+https://www.flaticon.com/free-icons
 
 ## TODO
 - Automate word/answer generation for simple multiple choice image recognition prompts
